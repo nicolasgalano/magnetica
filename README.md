@@ -1,0 +1,2 @@
+# magnetica
+Client Magentica
