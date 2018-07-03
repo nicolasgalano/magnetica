@@ -1,0 +1,148 @@
+// *************************************
+//
+//   Navbar
+//   -> Bootstrap Navbar Overrides
+//
+// *************************************
+
+nav{
+
+
+    padding:18px 0 0;
+
+    .container{
+        height:224px;
+        position:relative;
+    }
+
+    ul{
+        padding:0;
+    }
+
+    h1{
+        float:left;
+        position: relative;
+        top: 73px;
+        margin:0;
+        a{
+            img{
+
+            }
+        }
+    }
+
+    .top-links{
+
+        float:right;
+        margin-top:3px;
+
+        ul.redes{
+            float:right;
+            padding-top:22px;
+            text-align: center;
+            li{
+                list-style: none;
+                display:inline-block;
+                margin-left:1px;
+                a{
+                    background:url(../images/redes.png) no-repeat;
+                    height:34px;
+                    width:34px;
+                    display:block;
+                }
+                &.facebook a{
+                    background-position: 0px 0px;
+                    &:hover{
+                        background-position: 0 -38px;
+                    }
+                }
+                &.instagram a{
+                    background-position: -38px 0px;
+                    &:hover{
+                        background-position: -38px -38px;
+                    }
+                }
+                &.youtube a{
+                    background-position: -76px 0px;
+                    &:hover{
+                        background-position: -76px -38px;
+                    }
+                }
+                &.vimeo a{
+                    background-position: -114px 0px;
+                    &:hover{
+                        background-position: -114px -38px;
+                    }
+                }
+            }
+        }
+
+        ul.pais{
+            padding-left:28px;
+            float:right;
+            li{
+                list-style: none;
+                display:inline-block;
+                margin-left:1px;
+                span{
+                    text-align: center;
+                    display:block;
+                    width:100%;
+                    font-family:$lato;
+                    font-size:19px;
+                    line-height: 22px;
+                    font-weight: 300;
+                    color:#aeadb3;
+                    background:none;
+                }
+                &.active{
+                    span{
+                        color:#FFFFFF;
+                    }
+                }
+                a{
+                    background:url(../images/paises.png) no-repeat;
+                    height:34px;
+                    width:34px;
+                    display:block;
+                }
+                &.ar a{
+                    background-position: 0px 0px;
+                    &:hover{
+                        background-position: 0 -38px;
+                    }
+                }
+                &.py a{
+                    background-position: -38px 0px;
+                    &:hover{
+                        background-position: -38px -38px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    ul.nav{
+        position:absolute;
+        bottom:42px;
+        right:0;
+        text-align: center;
+        li{
+            display:inline-block;
+            text-transform: uppercase;
+            a{
+                font-family:$lato;
+                font-size:19px;
+                font-weight: 300;
+                color:#aeadb3;
+                background:none;
+                &:hover, &.active{
+                    color:#FFFFFF;
+                    background:none;
+                }
+            }
+        }
+    }
+
+}

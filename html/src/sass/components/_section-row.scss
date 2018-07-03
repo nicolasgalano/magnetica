@@ -1,0 +1,216 @@
+.section-row {
+
+
+}
+
+
+//SLIDER ROW
+.section-row.row-slider{
+
+    .overlay{
+
+        background:rgba(40,40,40,0.3);
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:calc(100% - 30px);
+        margin:0 15px;
+
+        .inner{
+            position:relative;
+
+        }
+
+        ul.dots{
+            width:100%;
+            position: absolute;
+            top:-40px;
+            text-align: center;
+            li{
+                display:inline-block;
+                list-style:none;
+                text-indent: -900px;
+                overflow: hidden;
+                width:17px;
+                height:17px;
+                margin:0 3px;
+                background:url(../images/img-dot.png) no-repeat;
+            }
+        }
+
+        .type{
+            position:absolute;
+            top:-82px;
+            left:34px;
+            width:61px;
+            height:61px;
+            background:url(../images/img-pic.png) center center no-repeat;
+            &.vid{
+                background-image:url(../images/img-vid.png);
+            }
+            &.pic{
+
+            }
+        }
+
+        .text{
+
+            p{
+                font-size: 35px;
+                line-height:40px;
+                font-weight: 700;
+                color:#FFF;
+                margin:0;
+                padding:26px 84px 26px 34px;
+            }
+
+            .icons{
+                position:absolute;
+                top:27px;
+                right:40px;
+                .cat-icon{
+                    float:left;
+                    width:28px;
+                    height:46px;
+                    margin:0 0 0 14px;
+                    background-repeat:no-repeat;
+                    background-size: contain;
+                    &.cat-contenidos{
+                        background-image: url(../images/cat-contenidos.png);
+                    }
+                    &.cat-diseno{
+                        background-image: url(../images/cat-diseno.png);
+                    }
+                    &.cat-creatividad{
+                        background-image: url(../images/cat-creatividad.png);
+                    }
+                    &.cat-eventos{
+                        background-image: url(../images/cat-eventos.png);
+                    }
+                }
+            }
+        }
+
+    }
+    .play-icon{
+
+    }
+
+    .multimedia{
+
+        img{
+            width: 100%;
+        }
+    }
+
+}
+
+
+//PROYCTOS ROW
+.section-row.row-proyectos{
+    .container{
+        padding:10px 20px 170px;
+    }
+    .col-xs-4{
+        position: relative;
+        padding:0 10px;
+    }
+
+    .proyecto{
+        margin: 10px 0px;
+        position: relative;
+    }
+
+    .type{
+        position:absolute;
+        top:20px;
+        left:20px;
+        width:45px;
+        height:45px;
+        background:url(../images/img-pic.png) center center no-repeat;
+        background-size: contain;
+        &.vid{
+            background-image:url(../images/img-vid.png);
+        }
+        &.pic{
+            background-image:url(../images/img-pic.png);
+        }
+    }
+
+    .overlay{
+
+        background:rgba(140, 140, 140, 0.3);
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+
+        .inner{
+            position:relative;
+
+        }
+
+        .text{
+
+            p{
+                font-size: 20px;
+                line-height:22px;
+                font-weight: 700;
+                color:#FFF;
+                margin:0;
+                padding:28px 46px 26px 16px;
+            }
+
+            .icons{
+                position:absolute;
+                top:35px;
+                right:15px;
+                .cat-icon{
+                    float:left;
+                    width:21px;
+                    height:34px;
+                    margin:0 0 0 9px;
+                    background-repeat:no-repeat;
+                    background-size: contain;
+                    &.cat-contenidos{
+                        background-image: url(../images/cat-contenidos.png);
+                    }
+                    &.cat-diseno{
+                        background-image: url(../images/cat-diseno.png);
+                    }
+                    &.cat-creatividad{
+                        background-image: url(../images/cat-creatividad.png);
+                    }
+                    &.cat-eventos{
+                        background-image: url(../images/cat-eventos.png);
+                    }
+                }
+            }
+        }
+
+        .icons{
+
+            .cat-icon{
+
+                &.cat-contenidos{
+
+                }
+                &.cat-diseno{
+
+                }
+                &.cat-contenidos{
+
+                }
+                &.cat-contenidos{
+
+                }
+            }
+        }
+    }
+    .multimedia{
+        img{
+            width:100%;
+        }
+    }
+
+}

@@ -1,0 +1,40 @@
+footer {
+    background:#FFFFFF;
+    .container{
+        padding:44px 0 46px;
+    }
+    h4{
+        font-size: 25px;
+        font-weight: 700;
+        padding-bottom:30px;
+        margin:0 0 0 4px;
+    }
+    .sep{
+        height:210px;
+        border-right:1px solid #9b999e;
+        border-left:1px solid #a7a6ab;
+        width: 0px;
+        padding: 0;
+    }
+    .informacion{
+        padding:0 0 0 4px;
+        p{
+            font-size:20px;
+            line-height: 22px;
+            font-weight: 400;
+            margin:0 0 4px;
+        }
+    }
+    .bottom{
+        background: #000;
+        text-align: center;
+        height:68px;
+        a.bottom-link{
+            margin-top:11px;
+            height:43px;
+            width:65px;
+            display:inline-block;
+            background:url(../images/img-bottom.png) no-repeat;
+        }
+    }
+}
