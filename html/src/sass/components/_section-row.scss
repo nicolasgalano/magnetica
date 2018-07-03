@@ -3,24 +3,108 @@
 
 }
 
+//FICHA ROW
+.section-row.row-ficha{
+
+    padding-bottom:160px;
+    .container{
+        position:relative;
+    }
+    a.arrow{
+        position:absolute;
+        top:20px;
+        width:20px;
+        height:31px;
+        text-indent: -900px;
+        overflow: hidden;
+        background:url(../images/img-arrow-left.png) center center no-repeat;
+        &.arrow-left{
+            left:-54px;
+            background-image: url(../images/img-arrow-left.png);
+        }
+        &.arrow-right{
+            right:-54px;
+            background-image: url(../images/img-arrow-right.png);
+        }
+    }
+
+    .col-xs-12{
+
+        h3{
+            font-size:35px;
+            line-height: 42px;
+            color:#FFF;
+            font-family: $lato;
+            font-weight: 900;
+            padding:0 0 24px;
+            margin-top: 11px;
+        }
+        .icons{
+
+            margin:0 0 27px;
+
+            .cat-icon{
+
+                float:left;
+                height:26px;
+                margin:0 14px 0 0;
+                padding:0 0 0 20px;
+                background-repeat:no-repeat;
+                background-size: contain;
+                font-size:16px;
+                line-height: 16px;
+                color:#FFF;
+                font-family: $lato;
+                font-weight: 200;
+
+                &.cat-contenidos{
+                    background-image: url(../images/cat-contenidos.png);
+                }
+                &.cat-diseno{
+                    background-image: url(../images/cat-diseno.png);
+                }
+                &.cat-creatividad{
+                    background-image: url(../images/cat-creatividad.png);
+                }
+                &.cat-eventos{
+                    background-image: url(../images/cat-eventos.png);
+                }
+            }
+
+        }
+        p{
+            font-size:20px;
+            line-height: 30px;
+            color:#FFF;
+            font-family: $lato;
+            font-weight: 300;
+            padding:0 0 40px;
+        }
+        .images{
+            .item-multimedia{
+                padding:0 0 20px;
+            }
+            img{
+                width:100%;
+            }
+        }
+    }
+
+}
 
 //SLIDER ROW
 .section-row.row-slider{
 
     .overlay{
-
         background:rgba(40,40,40,0.3);
         position:absolute;
         bottom:0;
         left:0;
         width:calc(100% - 30px);
         margin:0 15px;
-
         .inner{
             position:relative;
-
         }
-
         ul.dots{
             width:100%;
             position: absolute;
@@ -37,7 +121,6 @@
                 background:url(../images/img-dot.png) no-repeat;
             }
         }
-
         .type{
             position:absolute;
             top:-82px;
@@ -48,13 +131,9 @@
             &.vid{
                 background-image:url(../images/img-vid.png);
             }
-            &.pic{
-
-            }
+            &.pic{}
         }
-
         .text{
-
             p{
                 font-size: 35px;
                 line-height:40px;
@@ -63,7 +142,6 @@
                 margin:0;
                 padding:26px 84px 26px 34px;
             }
-
             .icons{
                 position:absolute;
                 top:27px;
@@ -90,19 +168,12 @@
                 }
             }
         }
-
     }
-    .play-icon{
-
-    }
-
     .multimedia{
-
         img{
             width: 100%;
         }
     }
-
 }
 
 
@@ -115,12 +186,10 @@
         position: relative;
         padding:0 10px;
     }
-
     .proyecto{
         margin: 10px 0px;
         position: relative;
     }
-
     .type{
         position:absolute;
         top:20px;
@@ -136,22 +205,16 @@
             background-image:url(../images/img-pic.png);
         }
     }
-
     .overlay{
-
         background:rgba(140, 140, 140, 0.3);
         position:absolute;
         bottom:0;
         left:0;
         width:100%;
-
         .inner{
             position:relative;
-
         }
-
         .text{
-
             p{
                 font-size: 20px;
                 line-height:22px;
@@ -160,7 +223,6 @@
                 margin:0;
                 padding:28px 46px 26px 16px;
             }
-
             .icons{
                 position:absolute;
                 top:35px;
@@ -187,30 +249,10 @@
                 }
             }
         }
-
-        .icons{
-
-            .cat-icon{
-
-                &.cat-contenidos{
-
-                }
-                &.cat-diseno{
-
-                }
-                &.cat-contenidos{
-
-                }
-                &.cat-contenidos{
-
-                }
-            }
-        }
     }
     .multimedia{
         img{
             width:100%;
         }
     }
-
 }
