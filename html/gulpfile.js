@@ -85,6 +85,11 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('build/fonts'));
 });
 
+gulp.task('videos', function () {
+    return gulp.src(build.app_files.videos)
+        .pipe(gulp.dest('build/videos'));
+});
+
 gulp.task('php', function () {
     return gulp.src(build.app_files.php)
         .pipe(gulp.dest('build/php'));
@@ -106,6 +111,7 @@ gulp.task('default', function(callback){
     runSequence('clean-build',
                 ['images',
                 'fonts',
+                'videos',
                 'php',
                 'sass-lint',
                 'sass',
@@ -119,6 +125,7 @@ gulp.task('watch', function(){
     runSequence('clean-build',
             ['images',
             'fonts',
+            'videos',
             'php',
             'sass-lint',
             'sass',

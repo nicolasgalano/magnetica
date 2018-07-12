@@ -1,0 +1,29 @@
+{
+  "autoprefixer_options": ["last 5 versions"],
+  "sass_lint": {
+    "src": "src/sass/**/*.scss",
+    "options": {
+      "config_file": "src/.sass-lint.yml"
+    }
+  },
+  "app_files": {
+    "fonts": [
+      "fonts/**/*",
+      "node_modules/bootstrap-sass/assets/fonts/**/*",
+      "node_modules/font-awesome/fonts/*"
+    ],
+    "js": ["src/js/**/*.js"],
+    "vendor_js": [
+      "node_modules/jquery/dist/jquery.min.js",
+      "node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+      "node_modules/wow.js/dist/wow.min.js",
+      "node_modules/jquery-validation/dist/jquery.validate.min.js"
+    ],
+    "sass": ["src/sass/app.scss"]
+  },
+  "output_files": {
+    "css": "css",
+    "js": "js"
+  }
+
+}

@@ -1,0 +1,31 @@
+extends layout
+
+block body
+    body.index
+    
+block header
+    include partials/header
+            
+block content
+            
+    //NOSOTROS
+    .section-row.row-nosotros
+        
+        .container
+            
+            .row
+                
+                .col-xs-12
+                    
+                    .images
+                        
+                        video.item-multimedia(width="100%", controls="", poster="images/img-placeholder-nosotros-video.jpg")
+                            source(src="videos/MANIFIESTO-MAGNETICA-v07.mp4", type="video/mp4")
+                            | Your browser does not support HTML5 video.
+
+                    h3 Somos
+                    
+                    p Mirá si seremos creativos que sobrevivimos al VHS, el CD Rom, El MSN y a internet sin WiFi. El tiempo que nos fue sobrando lo invertimos en jugar. Y acá llegamos. Somos una productora agencia especializada en eventos, experiencias y contenidos. Nos divertimos buscando formas nuevas de hacer y contar y nos hicimos expertos en eso.
+                    
+                    
+                

@@ -8,6 +8,7 @@
   },
   "app_files": {
     "images": "src/images/**/*",
+    "videos": "src/videos/**/*",
     "fonts": [
       "src/fonts/**/*",
       "node_modules/bootstrap-sass/assets/fonts/**/*",
