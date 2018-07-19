@@ -35,24 +35,30 @@
 		                <li class="py"><span>.PY</span><a href="#"></a></li>
 		            </ul>
 		            <ul class="redes">
-		                <li class="facebook"><a href="#"></a></li>
-		                <li class="instagram"><a href="#"></a></li>
-		                <li class="youtube"><a href="#"></a></li>
-		                <li class="vimeo"><a href="#"></a></li>
+		                <li class="facebook"><a href="https://es-la.facebook.com/Magnetica.Producciones/" target="_blank"></a></li>
+		                <li class="instagram"><a href="https://www.instagram.com/magnetica_producciones/" target="_blank"></a></li>
+		                <li class="youtube"><a href="https://www.youtube.com/channel/UCYsvtHUtY05_8e6yYlJS4oQ" target="_blank"></a></li>
+		                <li class="vimeo"><a href="https://vimeo.com/user70389527" target="_blank"></a></li>
 		            </ul>
 		        </div>
-				<!--
+
+				<div class="mobile-menu-icon" onclick="myFunction(this)">
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar3"></div>
+				</div>
+
+				<script>
+					function myFunction(x) {
+						x.classList.toggle("change");
+						$('.navbar-nav').toggleClass('open');
+						$('body').toggleClass('open-mobile-menu');
+					}
+				</script>
+
 				<?php
 					display_navigation();
 				?>
-				-->
 
-				<ul class="nav">
-		            <li><a href="index.html">Trabajos</a></li>
-		            <li><a href="nosotros.html">Nosotros</a></li>
-		            <li><a href="contacto.html">Contacto</a></li>
-		            <li><a href="clientes.html">Clientes</a></li>
-		        </ul>
-				
 		    </div>
 		</nav>

@@ -2,6 +2,7 @@
 *.iml
 .idea
 .DS_Store
+site/wp-content/uploads
 
 node_modules
 

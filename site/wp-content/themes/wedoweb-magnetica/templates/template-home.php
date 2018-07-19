@@ -1,7 +1,18 @@
 <?php
 /* Template Name: Home */
 get_header();
-/*src="<?php echo get_template_directory_uri(); ?>/images/slider/imac-bg.png"*/
+/*
+TODO:
+- Crear el custom post type de los proyectos con la info necesaria
+- Llenar dinamicamente la información en la HOME
+- Llenar/cargar el single-portfolio con la info dinamica necesaria para la Ficha
+- Crear el custom post types de Clientes
+- Cargar info dinamica de Clientes
+- Cargar info dinamica de Contacto(footer)
+- Cargar info dinamica de Nosotros
+- QA del sitio
+- Presentación en vivo al cliente para ajustes
+*/
 ?>
 
 <!--SLIDER-->

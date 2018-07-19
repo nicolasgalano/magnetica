@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Nosotros */
+/* Template Name: Clientes */
 get_header();
 ?>
 
@@ -8,42 +8,30 @@ get_header();
     <div class="container">
         <div class="slider-clientes">
             <ul class="slides">
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/abinbev.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/arcor.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/axion.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/brahma.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/brf.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/calsa.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/corona.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/eco.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/fiat.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/google.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/nespresso.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/noblesa.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/patagonia.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/pepsi.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/purina.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/stella.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/youtube.png"></a></li>
-                <li><a href="#" target="_blank">
-                <div class="helper"></div><img src="<?php echo get_template_directory_uri(); ?>/imagesclientes/ar/brahma2.png"></a></li>
+
+                <?php
+
+                $args = array( 'post_type' => 'clientes', 'posts_per_page' => -1, 'order' => 'DESC' );
+                $loop = new WP_Query( $args );
+                while ( $loop->have_posts() ) : $loop->the_post();
+
+                $categories = get_terms();
+
+                $item_href = get_field('site_url', $post->ID);
+
+                if($categories[0]->name == 'argentina'){
+
+                ?>
+
+                <li>
+                    <a href="<?=$item_href; ?>" target="_blank">
+                        <div class="helper"></div>
+                        <img src="<?php the_field('logo_cliente', $post->ID) ?>">
+                    </a>
+                </li>
+
+                <?php } endwhile; wp_reset_postdata(); ?>
+
             </ul>
         </div>
     </div>

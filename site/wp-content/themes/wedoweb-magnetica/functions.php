@@ -414,6 +414,7 @@ add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comment
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('init', 'create_post_type_portfolio'); // Add our HTML5 Blank Custom Post Type
+add_action('init', 'create_post_type_clientes');
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 add_action('init', 'create_new_url_querystring');
@@ -502,6 +503,41 @@ function create_post_type_portfolio()
     ));
 }
 
+// Create 1 Custom Post type called Portfolio
+function create_post_type_clientes()
+{
+    register_taxonomy_for_object_type('category', 'clientes'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('post_tag', 'clientes');
+    register_post_type('clientes', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Clientes', 'clientes'), // Rename these to suit
+            'singular_name' => __('Clientes', 'clientes'),
+            'add_new' => __('Agregar Nuevo', 'clientes'),
+            'add_new_item' => __('Agregar Nuevo Cliente', 'clientes'),
+            'edit' => __('Editar', 'clientes'),
+            'edit_item' => __('Editar Cliente', 'clientes'),
+            'new_item' => __('Nuevo Cliente', 'clientes'),
+            'view' => __('Ver Cliente', 'clientes'),
+            'view_item' => __('Ver Cliente', 'clientes'),
+            'search_items' => __('Buscar Cliente', 'clientes'),
+            'not_found' => __('No se encontraron clientes', 'clientes'),
+            'not_found_in_trash' => __('No se encontraron clientes', 'clientes')
+        ),
+        'menu_icon' => 'dashicons-list-view',
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => false,
+        'supports' => array(
+            'title'
+        ), // Go to Dashboard Custom Portfolio post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'category'
+        ) // Add Category and Post Tags support
+    ));
+}
+
 /*------------------------------------*\
 	ShortCode Functions
 \*------------------------------------*/
@@ -520,6 +556,160 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 
 if(function_exists("register_field_group"))
 {
+
+    register_field_group(array (
+		'id' => 'acf_nosotros-fields',
+		'title' => 'Nosotros',
+		'fields' => array (
+            array (
+				'key' => 'field_5',
+				'label' => 'Título',
+				'name' => 'nosotros_titulo',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+            array (
+				'key' => 'field_4',
+				'label' => 'Video',
+				'name' => 'nosotros_video',
+				'type' => 'file',
+                'return_format' => 'url',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+            array (
+				'key' => 'field_6',
+				'label' => 'Placeholder de Video',
+				'name' => 'nosotros_placeholder',
+				'type' => 'image',
+				'save_format' => 'url',
+				'preview_size' => 'full',
+				'library' => 'all',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '79',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+    register_field_group(array (
+		'id' => 'acf_contacto-fields',
+		'title' => 'Contacto',
+		'fields' => array (
+            array (
+				'key' => 'field_7',
+				'label' => 'En Argentina',
+				'name' => 'contacto_wysiwyg_ar',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+            array (
+				'key' => 'field_8',
+				'label' => 'En Paraguay',
+				'name' => 'contacto_wysiwyg_py',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '81',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+    register_field_group(array (
+		'id' => 'acf_cliente-fields',
+		'title' => 'Campos del Cliente',
+		'fields' => array (
+            array (
+				'key' => 'field_2',
+				'label' => 'URL del sitio',
+				'name' => 'site_url',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+            array (
+				'key' => 'field_3',
+				'label' => 'Logo del cliente',
+				'name' => 'logo_cliente',
+				'type' => 'image',
+				'save_format' => 'url',
+				'preview_size' => 'full',
+				'library' => 'all',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'clientes',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+
 	register_field_group(array (
 		'id' => 'acf_portfolio-fields',
 		'title' => 'Portfolio Fields',
