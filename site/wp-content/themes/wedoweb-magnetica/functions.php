@@ -413,8 +413,8 @@ add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditi
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
-add_action('init', 'create_post_type_portfolio'); // Add our HTML5 Blank Custom Post Type
-add_action('init', 'create_post_type_clientes');
+add_action('init', 'create_post_type_clientes'); //CUSTOM POST TYPE: CLIENTES
+add_action('init', 'create_post_type_trabajos'); //CUSTOM POST TYPE: TRABAJOS
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 add_action('init', 'create_new_url_querystring');
@@ -466,44 +466,7 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 	Custom Post Types
 \*------------------------------------*/
 
-// Create 1 Custom Post type called Portfolio
-function create_post_type_portfolio()
-{
-    register_taxonomy_for_object_type('category', 'portfolio'); // Register Taxonomies for Category
-    register_taxonomy_for_object_type('post_tag', 'portfolio');
-    register_post_type('portfolio', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Portfolio', 'portafolio'), // Rename these to suit
-            'singular_name' => __('Portfolio', 'portafolio'),
-            'add_new' => __('Add New', 'portafolio'),
-            'add_new_item' => __('Add New Portfolio', 'portafolio'),
-            'edit' => __('Edit', 'portafolio'),
-            'edit_item' => __('Edit Portfolio Post', 'portafolio'),
-            'new_item' => __('New Portfolio Post', 'portafolio'),
-            'view' => __('View Portfolio Post', 'portafolio'),
-            'view_item' => __('View Portfolio Post', 'portafolio'),
-            'search_items' => __('Search Portfolio Post', 'portafolio'),
-            'not_found' => __('No Portfolio Posts found', 'portafolio'),
-            'not_found_in_trash' => __('No Portfolio posts found in Trash', 'portafolio')
-        ),
-        'menu_icon' => 'dashicons-portfolio',
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => false,
-        'supports' => array(
-            'title',
-            'thumbnail'
-        ), // Go to Dashboard Custom Portfolio post for supports
-        'can_export' => true, // Allows export in Tools > Export
-        'taxonomies' => array(
-            'post_tag',
-            'category'
-        ) // Add Category and Post Tags support
-    ));
-}
-
-// Create 1 Custom Post type called Portfolio
+// CUSTOM POST TYPE: CLIENTES
 function create_post_type_clientes()
 {
     register_taxonomy_for_object_type('category', 'clientes'); // Register Taxonomies for Category
@@ -537,6 +500,43 @@ function create_post_type_clientes()
         ) // Add Category and Post Tags support
     ));
 }
+
+// CUSTOM POST TYPE: TRABAJOS
+function create_post_type_trabajos()
+{
+    register_taxonomy_for_object_type('category', 'trabajos'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('post_tag', 'trabajos');
+    register_post_type('trabajos', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Trabajos', 'trabajos'), // Rename these to suit
+            'singular_name' => __('Trabajos', 'trabajos'),
+            'add_new' => __('Agregar Nuevo', 'trabajos'),
+            'add_new_item' => __('Agregar Nuevo Trabajo', 'trabajos'),
+            'edit' => __('Editar', 'trabajos'),
+            'edit_item' => __('Editar Trabajo', 'trabajos'),
+            'new_item' => __('Nuevo Trabajo', 'trabajos'),
+            'view' => __('Ver Trabajo', 'trabajos'),
+            'view_item' => __('Ver Trabajo', 'trabajos'),
+            'search_items' => __('Buscar Trabajo', 'trabajos'),
+            'not_found' => __('No se encontraron trabajos', 'trabajos'),
+            'not_found_in_trash' => __('No se encontraron trabajos', 'trabajos')
+        ),
+        'menu_icon' => 'dashicons-portfolio',
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => false,
+        'supports' => array(
+            'title',
+            'editor'
+        ), // Go to Dashboard Custom Portfolio post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'category'
+        ) // Add Category and Post Tags support
+    ));
+}
+
 
 /*------------------------------------*\
 	ShortCode Functions
@@ -709,340 +709,102 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 
+    acf_add_local_field(array(
+    	'key' => 'field_trabajo_image',
+    	'label' => 'Imagen',
+    	'name' => 'trabajos_imagen',
+    	'type' => 'image',
+    	'parent' => 'field_23',
+        'save_format' => 'url',
+        'preview_size' => 'full',
+        'library' => 'all'
+    ));
 
-	register_field_group(array (
-		'id' => 'acf_portfolio-fields',
-		'title' => 'Portfolio Fields',
+    register_field_group(array (
+		'id' => 'acf_trabajos-fields',
+		'title' => 'Campos de Trabajos',
 		'fields' => array (
             array (
-				'key' => 'field_5af71fc54998a',
-				'label' => 'Texto de lista',
-				'name' => 'texto_lista',
+				'key' => 'field_25',
+				'label' => 'Nombre del cliente',
+				'name' => 'trabajos_cliente',
 				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => '',
-				'maxlength' => '',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
 			),
             array (
-				'key' => 'field_5af71fc54999a',
-				'label' => 'URL del sitio',
-				'name' => 'site_url',
+				'key' => 'field_26',
+				'label' => 'Nombre del evento',
+				'name' => 'trabajos_nombre',
 				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
 			),
             array (
-				'key' => 'field_5af71fc54995a',
-				'label' => 'Detalle Activo?',
-				'name' => 'detalle_activo',
-				'type' => 'true_false',
-				'message' => '',
-				'default_value' => 0,
-			),
-			array (
-				'key' => 'field_5af4882b7364f',
-				'label' => 'Fecha',
-				'name' => 'fecha',
-				'type' => 'text',
+				'key' => 'field_27',
+				'label' => 'Destacado',
+				'name' => 'trabajos_destacado',
+				'type' => 'checkbox',
 				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af48924e7ba2',
-				'label' => 'Titulo Sección 1',
-				'name' => 'titulo_section_1',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af48c7fbe7b7',
-				'label' => 'Texto Sección 1',
-				'name' => 'texto_section_1',
-				'type' => 'textarea',
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'formatting' => 'none',
-			),
-			array (
-				'key' => 'field_5af48d2ea7231',
-				'label' => 'Background Sección 1',
-				'name' => 'background_section_1',
-				'type' => 'image',
-				'save_format' => 'url',
-				'preview_size' => 'full',
-				'library' => 'all',
-			),
-			array (
-				'key' => 'field_5af48df3c334b',
-				'label' => 'Imagen Seccion 1',
-				'name' => 'imagen_section_1',
-				'type' => 'image',
-				'save_format' => 'url',
-				'preview_size' => 'full',
-				'library' => 'all',
-			),
-			array (
-				'key' => 'field_5af4a0a9f2d4e',
-				'label' => 'Lista Item 1 Icono',
-				'name' => 'lista_item_1_icono',
-				'type' => 'text',
-				'instructions' => 'https://fontawesome.com/v4.7.0/icons/',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a119f2d4f',
-				'label' => 'Lista Item 1 Titulo',
-				'name' => 'lista_item_1_titulo',
-				'type' => 'text',
-				'instructions' => 'Usar Font Awesome Icons ej: "fa-file-word-o"',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a162f2d50',
-				'label' => 'Lista Item 1 Texto',
-				'name' => 'lista_item_1_texto',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a182f2d51',
-				'label' => 'Lista Item 2 Icono',
-				'name' => 'lista_item_2_icono',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a1daf2d52',
-				'label' => 'Lista Item 2 Titulo',
-				'name' => 'lista_item_2_titulo',
-				'type' => 'text',
-				'instructions' => 'Usar Font Awesome Icons ej: "fa-file-word-o"',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a1e7f2d53',
-				'label' => 'Lista Item 2 Texto',
-				'name' => 'lista_item_2_texto',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a1fbf2d54',
-				'label' => 'Lista Item 3 Icono',
-				'name' => 'lista_item_3_icono',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a21df2d55',
-				'label' => 'Lista Item 3 Titulo',
-				'name' => 'lista_item_3_titulo',
-				'type' => 'text',
-				'instructions' => 'Usar Font Awesome Icons ej: "fa-file-word-o"',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4a22af2d56',
-				'label' => 'Lista Item 3 Texto',
-				'name' => 'lista_item_3_texto',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
+                'choices' => array(
+            		'true'	=> 'Destacar'
+            	),
 			),
             array (
-				'key' => 'field_5af71fc54995g',
-				'label' => 'Activar Sección 2',
-				'name' => 'section2_activo',
-				'type' => 'true_false',
-				'message' => '',
-				'default_value' => 0,
-			),
-			array (
-				'key' => 'field_5af4a829a0d2e',
-				'label' => 'Titulo Sección 2',
-				'name' => 'titulo_section_2',
-				'type' => 'text',
+				'key' => 'field_21',
+				'label' => 'Icono de lista',
+				'name' => 'trabajos_icono',
+				'type' => 'radio',
 				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
+                'choices' => array(
+            		'imagen'	=> 'Imagen',
+                    'video'	=> 'Video'
+            	),
 			),
-			array (
-				'key' => 'field_5af4a838a0d2f',
-				'label' => 'Texto Sección 2',
-				'name' => 'texto_section_2',
-				'type' => 'textarea',
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'formatting' => 'none',
-			),
-			array (
-				'key' => 'field_5af4a873a0d31',
-				'label' => 'Imagen Seccion 2',
-				'name' => 'imagen_section_2',
-				'type' => 'image',
-				'save_format' => 'url',
-				'preview_size' => 'full',
-				'library' => 'all',
-			),
-			array (
-				'key' => 'field_5af4b0e71c81e',
-				'label' => 'Background Sección 2 Degrade 2',
-				'name' => 'background_section_2_degrade_2',
-				'type' => 'text',
-				'instructions' => 'Escribir color hexadecimal incluyendo el hastag(#) ej: "#XXXXXX"',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4aee61c81d',
-				'label' => 'Background Sección 2 Degrade 1',
-				'name' => 'background_section_2_degrade_1',
-				'type' => 'text',
-				'instructions' => 'Escribir color hexadecimal incluyendo el hastag(#) ej: "#XXXXXX"',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-
             array (
-				'key' => 'field_5af71fc54995h',
-				'label' => 'Activar Sección 3',
-				'name' => 'section3_activo',
-				'type' => 'true_false',
-				'message' => '',
-				'default_value' => 0,
-			),
-			array (
-				'key' => 'field_5af4b32707670',
-				'label' => 'Titulo Sección 3',
-				'name' => 'titulo_section_3',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4b33307671',
-				'label' => 'Texto Sección 3',
-				'name' => 'texto_section_3',
-				'type' => 'textarea',
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'formatting' => 'none',
-			),
-			array (
-				'key' => 'field_5af4b33c07672',
-				'label' => 'Imagen Seccion 3',
-				'name' => 'imagen_section_3',
+				'key' => 'field_24',
+				'label' => 'GIF',
+				'name' => 'trabajos_gif',
 				'type' => 'image',
+				'default_value' => '',
 				'save_format' => 'url',
 				'preview_size' => 'full',
-				'library' => 'all',
+				'library' => 'all'
 			),
-			array (
-				'key' => 'field_5af4b34407673',
-				'label' => 'Background Sección 3 Degrade 1',
-				'name' => 'background_section_3_degrade_1',
-				'type' => 'text',
-				'instructions' => 'Escribir color hexadecimal incluyendo el hastag(#) ej: "#XXXXXX"',
+            array (
+                'key' => 'field_22',
+                'label' => 'URL de Video Promocional (Vimeo)',
+				'name' => 'trabajos_video_promo',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            /*array (
+				'key' => 'field_22',
+				'label' => 'Video Promocional',
+				'name' => 'trabajos_video_promo',
+				'type' => 'file',
 				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5af4b35107674',
-				'label' => 'Background Sección 3 Degrade 2',
-				'name' => 'background_section_3_degrade_2',
-				'type' => 'text',
-				'instructions' => 'Escribir color hexadecimal incluyendo el hastag(#) ej: "#XXXXXX"',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
+                'return_format' => 'url'
+			),*/
+            array (
+				'key' => 'field_23',
+				'label' => 'Lista de Imagenes',
+				'name' => 'trabajos_imagenes',
+				'type' => 'repeater',
+				'default_value' => ''
 			),
 		),
 		'location' => array (
@@ -1050,7 +812,7 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'portfolio',
+					'value' => 'trabajos',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
@@ -1064,7 +826,19 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+
 }
+
+
+
+/* MENU */
+function remove_menus(){
+
+    remove_menu_page( 'edit-comments.php' );          //Comments
+    remove_menu_page( 'edit.php?post_type=acf-field-group' );
+
+}
+add_action( 'admin_menu', 'remove_menus' );
 
 
 ?>

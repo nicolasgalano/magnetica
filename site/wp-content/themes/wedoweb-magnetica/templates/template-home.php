@@ -3,15 +3,13 @@
 get_header();
 /*
 TODO:
-- Crear el custom post type de los proyectos con la info necesaria
 - Llenar dinamicamente la información en la HOME
 - Llenar/cargar el single-portfolio con la info dinamica necesaria para la Ficha
-- Crear el custom post types de Clientes
-- Cargar info dinamica de Clientes
-- Cargar info dinamica de Contacto(footer)
-- Cargar info dinamica de Nosotros
+- Cargar dinamicamente el slider de la home
+- Logica de cambio de AR a PY
+- Logica de reproduccion de videos en slider
 - QA del sitio
-- Presentación en vivo al cliente para ajustes
+- Presentación en vivo al cliente para ajustes (ya mande mail)
 */
 ?>
 
@@ -20,11 +18,45 @@ TODO:
     <div class="container">
         <div class="flexslider">
             <ul class="slides">
-                <!--
-					li
-                		iframe(src="https://player.vimeo.com/video/271081511?api=1&title=1&portrait=0&transparent=0&autoplay=1&byline=1&player_id=player_1", id="player_1",width="100%", height="641", frameborder="0", allowfullscreen)
-            	-->
-	            <li>
+
+                <?php
+                $args = array( 'post_type' => 'trabajos', 'posts_per_page' => -1, 'order' => 'DESC' );
+                $loop = new WP_Query( $args );
+                while ( $loop->have_posts() ) : $loop->the_post();
+
+                $destado = get_field('trabajos_destacado', $post->ID);
+
+                if($destado[0] == 'true'){
+
+                $categories = get_the_category($post->ID);
+                ?>
+
+                <li>
+	                <div class="inner-slide">
+	                    <div class="overlay">
+	                        <div class="inner">
+	                            <div class="text">
+	                                <p><?php the_field('trabajos_cliente', $post->ID) ?> - <?php the_field('trabajos_nombre', $post->ID) ?></p>
+	                                <div class="icons">
+	                                    <?php foreach ($categories as $category) { ?>
+                                            <div class="cat-icon cat-<?=$category->name?>"></div>
+                                        <?php } ?>
+	                                </div>
+	                            </div>
+	                            <div class="type vid"></div>
+                                <!-- <div class="type pic"></div> -->
+	                        </div>
+	                    </div>
+                        <!-- <div class="multimedia" style="background-image:url(<?php echo get_template_directory_uri(); ?>/images/dummie/img-home.jpg);"></div> -->
+	                    <div class="multimedia">
+	                        <iframe src="<?php the_field('trabajos_video_promo', $post->ID); ?>?api=1&amp;title=0&amp;portrait=0&amp;transparent=0&amp;autoplay=1&amp;byline=0&amp;player_id=player_11" id="player_11" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+	                    </div>
+	                </div>
+	            </li>
+
+                <?php } endwhile; wp_reset_postdata(); ?>
+
+                <li>
 	                <div class="inner-slide">
 	                    <div class="overlay">
 	                        <div class="inner">
@@ -41,24 +73,12 @@ TODO:
 	                    <div class="multimedia" style="background-image:url(<?php echo get_template_directory_uri(); ?>/images/dummie/img-home.jpg);"></div>
 	                </div>
 	            </li>
-	            <li>
-	                <div class="inner-slide">
-	                    <div class="overlay">
-	                        <div class="inner">
-	                            <div class="text">
-	                                <p>Producimos Comediante! / Nueva serie web</p>
-	                                <div class="icons">
-	                                    <div class="cat-icon cat-contenidos"></div>
-	                                </div>
-	                            </div>
-	                            <div class="type vid"></div>
-	                        </div>
-	                    </div>
-	                    <div class="multimedia" style="background-image:url(<?php echo get_template_directory_uri(); ?>/images/dummie/img-ficha2.jpg);">
-	                        <iframe src="https://player.vimeo.com/video/271081511?api=1&amp;title=0&amp;portrait=0&amp;transparent=0&amp;autoplay=1&amp;byline=0&amp;player_id=player_11" id="player_11" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-	                    </div>
-	                </div>
-	            </li>
+
+                <!--
+					li
+                		iframe(src="https://player.vimeo.com/video/271081511?api=1&title=1&portrait=0&transparent=0&autoplay=1&byline=1&player_id=player_1", id="player_1",width="100%", height="641", frameborder="0", allowfullscreen)
+            	-->
+
 	        </ul>
 	    </div>
 	</div>
@@ -68,159 +88,37 @@ TODO:
 <div class="section-row row-proyectos">
     <div class="container">
         <div class="row">
+
+            <?php
+
+            $args = array( 'post_type' => 'trabajos', 'posts_per_page' => -1, 'order' => 'DESC' );
+            $loop = new WP_Query( $args );
+            while ( $loop->have_posts() ) : $loop->the_post();
+
+            $categories = get_the_category($post->ID);
+            ?>
+
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
+                <a href="<?=get_permalink($post->ID) ?>" class="proyecto">
                     <div class="type pic"></div>
                     <div class="overlay">
                         <div class="inner">
                             <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
+                                <p><?php the_field('trabajos_nombre', $post->ID) ?><br><?php the_field('trabajos_cliente', $post->ID) ?></p>
                                 <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-diseno"></div>
+                                    <?php foreach ($categories as $category) { ?>
+                                        <div class="cat-icon cat-<?=$category->name?>"></div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod1.jpg"></div>
-                </div>
+                    <div class="multimedia"><img src="<?php the_field('trabajos_gif', $post->ID) ?>"></div>
+                </a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type vid"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-creatividad"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod2.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type vid"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-diseno"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod1.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type pic"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-diseno"></div>
-                                    <div class="cat-icon cat-eventos"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod1.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type vid"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-creatividad"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod2.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type pic"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod2.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type vid"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-diseno"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod1.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type vid"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-creatividad"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod1.jpg"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="proyecto">
-                    <div class="type pic"></div>
-                    <div class="overlay">
-                        <div class="inner">
-                            <div class="text">
-                                <p>Fiesta de disfraces <br> BRAHMA</p>
-                                <div class="icons">
-                                    <div class="cat-icon cat-contenidos"></div>
-                                    <div class="cat-icon cat-diseno"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="multimedia"><img src="<?php echo get_template_directory_uri(); ?>/images/dummie/img-prod1.jpg"></div>
-                </div>
-            </div>
+
+            <?php endwhile; wp_reset_postdata(); ?>
+
         </div>
     </div>
 </div>

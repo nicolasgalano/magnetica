@@ -1,8 +1,8 @@
 <?php
 
-if (is_singular('portfolio')) {
+if (is_singular('trabajos')) {
 
-    get_template_part( 'single', 'portfolio' );
+    get_template_part( 'single', 'trabajo' );
 
 }else{
 
