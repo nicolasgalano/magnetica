@@ -1,13 +1,11 @@
 <?php
+
 /* Template Name: Home */
 get_header();
 /*
 TODO:
-- Llenar dinamicamente la información en la HOME
-- Llenar/cargar el single-portfolio con la info dinamica necesaria para la Ficha
-- Cargar dinamicamente el slider de la home
-- Logica de cambio de AR a PY
 - Logica de reproduccion de videos en slider
+- Crear documento
 - QA del sitio
 - Presentación en vivo al cliente para ajustes (ya mande mail)
 */
@@ -36,15 +34,14 @@ TODO:
 	                    <div class="overlay">
 	                        <div class="inner">
 	                            <div class="text">
-	                                <p><?php the_field('trabajos_cliente', $post->ID) ?> - <?php the_field('trabajos_nombre', $post->ID) ?></p>
+	                                <p><?php the_field('trabajos_cliente', $post->ID) ?><?php if( get_field('trabajos_cliente') && get_field('trabajos_nombre') ){ ?> - <?php } ?><?php the_field('trabajos_nombre', $post->ID) ?></p>
 	                                <div class="icons">
 	                                    <?php foreach ($categories as $category) { ?>
                                             <div class="cat-icon cat-<?=$category->name?>"></div>
                                         <?php } ?>
 	                                </div>
 	                            </div>
-	                            <div class="type vid"></div>
-                                <!-- <div class="type pic"></div> -->
+	                            <div class="type <?php the_field('trabajos_icono', $post->ID); ?>"></div>
 	                        </div>
 	                    </div>
                         <!-- <div class="multimedia" style="background-image:url(<?php echo get_template_directory_uri(); ?>/images/dummie/img-home.jpg);"></div> -->
@@ -55,24 +52,6 @@ TODO:
 	            </li>
 
                 <?php } endwhile; wp_reset_postdata(); ?>
-
-                <li>
-	                <div class="inner-slide">
-	                    <div class="overlay">
-	                        <div class="inner">
-	                            <div class="text">
-	                                <p>Producimos Comediante! / Nueva serie web</p>
-	                                <div class="icons">
-	                                    <div class="cat-icon cat-contenidos"></div>
-	                                    <div class="cat-icon cat-eventos"></div>
-	                                </div>
-	                            </div>
-	                            <div class="type pic"></div>
-	                        </div>
-	                    </div>
-	                    <div class="multimedia" style="background-image:url(<?php echo get_template_directory_uri(); ?>/images/dummie/img-home.jpg);"></div>
-	                </div>
-	            </li>
 
                 <!--
 					li
@@ -90,21 +69,28 @@ TODO:
         <div class="row">
 
             <?php
-
             $args = array( 'post_type' => 'trabajos', 'posts_per_page' => -1, 'order' => 'DESC' );
             $loop = new WP_Query( $args );
             while ( $loop->have_posts() ) : $loop->the_post();
 
             $categories = get_the_category($post->ID);
+
+            $show = false;
+            foreach ($categories as $category) {
+                if( ($category->name=='argentina' && $_SESSION['pais']=='AR') || ($category->name=='paraguay' && $_SESSION['pais']=='PY') ){
+                    $show = true;
+                }
+            }
+            if( $show ){
             ?>
 
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <a href="<?=get_permalink($post->ID) ?>" class="proyecto">
-                    <div class="type pic"></div>
+                    <div class="type <?php the_field('trabajos_icono', $post->ID); ?>"></div>
                     <div class="overlay">
                         <div class="inner">
                             <div class="text">
-                                <p><?php the_field('trabajos_nombre', $post->ID) ?><br><?php the_field('trabajos_cliente', $post->ID) ?></p>
+                                <p><?php the_field('trabajos_nombre', $post->ID) ?><?php if( get_field('trabajos_cliente') && get_field('trabajos_nombre') ){ ?><br><?php } ?><?php the_field('trabajos_cliente', $post->ID) ?></p>
                                 <div class="icons">
                                     <?php foreach ($categories as $category) { ?>
                                         <div class="cat-icon cat-<?=$category->name?>"></div>
@@ -117,7 +103,7 @@ TODO:
                 </a>
             </div>
 
-            <?php endwhile; wp_reset_postdata(); ?>
+            <?php } endwhile; wp_reset_postdata(); ?>
 
         </div>
     </div>

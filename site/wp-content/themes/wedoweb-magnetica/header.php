@@ -31,8 +31,8 @@
 		        <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-header.png"></a></h1>
 		        <div class="top-links clearfix">
 		            <ul class="pais">
-		                <li class="ar"><span>.AR</span><a href="#"></a></li>
-		                <li class="py"><span>.PY</span><a href="#"></a></li>
+		                <li class="ar <?= ($_SESSION['pais']=='AR')?'activo':'' ?>"><span>.AR</span><a href="?pais=AR"></a></li>
+		                <li class="py <?= ($_SESSION['pais']=='PY')?'activo':'' ?>"><span>.PY</span><a href="?pais=PY"></a></li>
 		            </ul>
 		            <ul class="redes">
 		                <li class="facebook"><a href="https://es-la.facebook.com/Magnetica.Producciones/" target="_blank"></a></li>

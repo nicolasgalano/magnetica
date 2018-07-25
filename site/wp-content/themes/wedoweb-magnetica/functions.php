@@ -524,7 +524,7 @@ function create_post_type_trabajos()
         ),
         'menu_icon' => 'dashicons-portfolio',
         'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'hierarchical' => false, // Allows your posts to behave like Hierarchy Pages
         'has_archive' => false,
         'supports' => array(
             'title',
@@ -830,7 +830,6 @@ if(function_exists("register_field_group"))
 }
 
 
-
 /* MENU */
 function remove_menus(){
 
@@ -840,5 +839,23 @@ function remove_menus(){
 }
 add_action( 'admin_menu', 'remove_menus' );
 
+
+/*SESSION*/
+function register_my_session()
+{
+  if( !session_id() )
+  {
+    session_start();
+    if(!$_SESSION['pais'])
+        $_SESSION['pais']='AR';
+    if($_GET['pais']){
+        if($_GET['pais'] == 'AR')
+            $_SESSION['pais']='AR';
+        if($_GET['pais'] == 'PY')
+            $_SESSION['pais']='PY';
+    }
+  }
+}
+add_action('init', 'register_my_session');
 
 ?>

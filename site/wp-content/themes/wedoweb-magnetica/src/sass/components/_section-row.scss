@@ -170,6 +170,9 @@
             padding:0 0 40px;
         }
         .images{
+            iframe.item-multimedia{
+                height:660px;
+            }
             .item-multimedia{
                 padding:0 0 20px;
             }
@@ -241,10 +244,10 @@
             width:61px;
             height:61px;
             background:url(../images/img-pic.png) center center no-repeat;
-            &.vid{
+            &.video{
                 background-image:url(../images/img-vid.png);
             }
-            &.pic{}
+            &.imagen{}
         }
         .text{
             p{
@@ -320,10 +323,10 @@
         height:45px;
         background:url(../images/img-pic.png) center center no-repeat;
         background-size: contain;
-        &.vid{
+        &.video{
             background-image:url(../images/img-vid.png);
         }
-        &.pic{
+        &.imagen{
             background-image:url(../images/img-pic.png);
         }
     }
@@ -347,15 +350,17 @@
             }
             .icons{
                 position:absolute;
-                top:35px;
+                top:0px;
                 right:15px;
+                height: 100%;
                 .cat-icon{
                     float:left;
                     width:21px;
-                    height:34px;
+                    height:100%;
                     margin:0 0 0 9px;
                     background-repeat:no-repeat;
                     background-size: contain;
+                    background-position: 0 center;
                     &.cat-contenidos{
                         background-image: url(../images/cat-contenidos.png);
                     }

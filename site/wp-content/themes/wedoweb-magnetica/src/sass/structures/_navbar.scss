@@ -121,16 +121,16 @@ nav{
                     display:block;
                 }
                 &.ar a{
-                    background-position: 0px 0px;
-                    &:hover{
-                        background-position: 0 -38px;
-                    }
+                    background-position: 0px -36px;
+                }
+                &.ar.activo a{
+                        background-position: 0 0px;
                 }
                 &.py a{
-                    background-position: -38px 0px;
-                    &:hover{
-                        background-position: -38px -38px;
-                    }
+                    background-position: -37px -36px;
+                }
+                &.py.activo a{
+                    background-position: -37px -0px;
                 }
 
             }
