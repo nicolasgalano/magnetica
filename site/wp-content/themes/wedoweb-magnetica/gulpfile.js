@@ -97,8 +97,8 @@ gulp.task('watch', function(){
     runSequence('clean-js', 'clean-css',
             ['sass-lint',
             'sass',
-            'scripts',
-            'vendor_js'],
+            'vendor_js',
+            'scripts'],
         function(){
             var sassWatcher = gulp.watch('src/sass/**/*.scss', function(){
                 runSequence('sass-lint',
@@ -110,7 +110,7 @@ gulp.task('watch', function(){
             });
             var jsWatcher = gulp.watch('src/js/**/*.js', function(){
                 runSequence(
-                    'clean-js', 'scripts'
+                    'clean-js', 'vendor_js', 'scripts'
                     );
             });
             jsWatcher.on('change', function(event) {

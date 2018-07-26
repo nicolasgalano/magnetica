@@ -24,7 +24,9 @@
 
                 <div class="icons clearfix">
                     <?php foreach ($categories as $category) { ?>
-                        <div class="cat-icon cat-<?=$category->name?>"><?php if($category->name == 'diseno'){ echo 'diseño'; } else { ?><?=$category->name?><?php } ?></div>
+                        <?php if( $category->name == 'diseno' || $category->name == 'eventos' || $category->name == 'creatividad' || $category->name == 'contenidos' ){ ?>
+                            <div class="cat-icon cat-<?=$category->name?>"><?php if($category->name == 'diseno'){ echo 'diseño'; } else { ?><?=$category->name?><?php } ?></div>
+                        <?php } ?>
                     <?php } ?>
                 </div>
 
@@ -32,7 +34,7 @@
 
                 <div class="images">
 
-                    <iframe class="item-multimedia" src="<?php the_field('trabajos_video_promo', $post->ID); ?>?title=0&byline=0&portrait=0&transparent=0&autoplay=1" id="player_11" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="item-multimedia" allow="autoplay; fullscreen" src="<?php the_field('trabajos_video_promo', $post->ID); ?>?title=0&byline=0&portrait=0&transparent=0&autoplay=1" id="player_11" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
 
                     <?php if( have_rows('trabajos_imagenes') ): ?>
 
