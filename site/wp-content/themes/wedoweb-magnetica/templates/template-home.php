@@ -4,10 +4,7 @@
 get_header();
 /*
 TODO:
-- Logica de reproduccion de videos en slider
-- Crear documento
-- QA del sitio
-- Presentación en vivo al cliente para ajustes (ya mande mail)
+- AUmentar limite de upload del servidor del cliente y el mio
 */
 ?>
 
