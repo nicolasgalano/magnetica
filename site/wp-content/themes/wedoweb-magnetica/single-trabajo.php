@@ -22,15 +22,15 @@
 
                 <h3><?php the_field('trabajos_cliente', $post->ID) ?><?php if( get_field('trabajos_cliente') && get_field('trabajos_nombre') ){ ?> - <?php } ?><?php the_field('trabajos_nombre', $post->ID) ?></h3>
 
+                <?php the_content(); ?>
+
                 <div class="icons clearfix">
                     <?php foreach ($categories as $category) { ?>
-                        <?php if( $category->name == 'diseno' || $category->name == 'eventos' || $category->name == 'creatividad' || $category->name == 'contenidos' ){ ?>
+                        <?php if( $category->name == 'diseno' || $category->name == 'eventos' || $category->name == 'creatividad' || $category->name == 'contenidos' || $category->name == 'experiencias' ){ ?>
                             <div class="cat-icon cat-<?=$category->name?>"><?php if($category->name == 'diseno'){ echo 'diseño'; } else { ?><?=$category->name?><?php } ?></div>
                         <?php } ?>
                     <?php } ?>
                 </div>
-
-                <?php the_content(); ?>
 
                 <div class="images">
 

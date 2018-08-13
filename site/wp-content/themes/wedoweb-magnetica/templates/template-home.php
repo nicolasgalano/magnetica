@@ -37,7 +37,9 @@ TODO:
 	                                <p><?php the_field('trabajos_cliente', $post->ID) ?><?php if( get_field('trabajos_cliente') && get_field('trabajos_nombre') ){ ?> - <?php } ?><?php the_field('trabajos_nombre', $post->ID) ?></p>
 	                                <div class="icons">
 	                                    <?php foreach ($categories as $category) { ?>
-                                            <div class="cat-icon cat-<?=$category->name?>"></div>
+                                            <?php if( $category->name == 'diseno' || $category->name == 'eventos' || $category->name == 'creatividad' || $category->name == 'contenidos' || $category->name == 'experiencias' ){ ?>
+                                                <div class="cat-icon cat-<?=$category->name?>"></div>
+                                            <?php } ?>
                                         <?php } ?>
 	                                </div>
 	                            </div>
@@ -71,12 +73,12 @@ TODO:
 
             $categories = get_the_category($post->ID);
 
-            $show = false;
-            foreach ($categories as $category) {
-                if( ($category->name=='argentina' && $_SESSION['pais']=='AR') || ($category->name=='paraguay' && $_SESSION['pais']=='PY') ){
+            //$show = false;
+            //foreach ($categories as $category) {
+                //if( ($category->name=='argentina' && $_SESSION['pais']=='AR') || ($category->name=='paraguay' && $_SESSION['pais']=='PY') ){
                     $show = true;
-                }
-            }
+                //}
+            //}
             if( $show ){
             ?>
 
@@ -89,7 +91,9 @@ TODO:
                                 <p><?php the_field('trabajos_nombre', $post->ID) ?><?php if( get_field('trabajos_cliente') && get_field('trabajos_nombre') ){ ?><br><?php } ?><?php the_field('trabajos_cliente', $post->ID) ?></p>
                                 <div class="icons">
                                     <?php foreach ($categories as $category) { ?>
-                                        <div class="cat-icon cat-<?=$category->name?>"></div>
+                                        <?php if( $category->name == 'diseno' || $category->name == 'eventos' || $category->name == 'creatividad' || $category->name == 'contenidos' || $category->name == 'experiencias' ){ ?>
+                                            <div class="cat-icon cat-<?=$category->name?>"></div>
+                                        <?php } ?>
                                     <?php } ?>
                                 </div>
                             </div>

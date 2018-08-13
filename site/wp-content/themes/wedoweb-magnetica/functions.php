@@ -595,6 +595,41 @@ if(function_exists("register_field_group"))
 				'preview_size' => 'full',
 				'library' => 'all',
 			),
+            array (
+				'key' => 'field_30',
+				'label' => 'Creatividad',
+				'name' => 'nosotros_creatividad',
+				'type' => 'repeater',
+				'default_value' => ''
+			),
+            array (
+				'key' => 'field_31',
+				'label' => 'Diseño',
+				'name' => 'nosotros_diseno',
+				'type' => 'repeater',
+				'default_value' => ''
+			),
+            array (
+				'key' => 'field_32',
+				'label' => 'Eventos',
+				'name' => 'nosotros_eventos',
+				'type' => 'repeater',
+				'default_value' => ''
+			),
+            array (
+				'key' => 'field_33',
+				'label' => 'Contenidos',
+				'name' => 'nosotros_contenidos',
+				'type' => 'repeater',
+				'default_value' => ''
+			),
+            array (
+				'key' => 'field_34',
+				'label' => 'Experiencias',
+				'name' => 'nosotros_experiencias',
+				'type' => 'repeater',
+				'default_value' => ''
+			),
 		),
 		'location' => array (
 			array (
@@ -615,6 +650,73 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+
+    acf_add_local_field(array(
+    	'key' => 'field_nosotros_creatividad',
+    	'label' => 'Item',
+    	'name' => 'nosotros_item_creatividad',
+    	'parent' => 'field_30',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => '',
+    ));
+    acf_add_local_field(array(
+    	'key' => 'field_nosotros_diseno',
+    	'label' => 'Item',
+    	'name' => 'nosotros_item_diseno',
+    	'parent' => 'field_31',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => '',
+    ));
+    acf_add_local_field(array(
+    	'key' => 'field_nosotros_eventos',
+    	'label' => 'Item',
+    	'name' => 'nosotros_item_eventos',
+    	'parent' => 'field_32',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => '',
+    ));
+    acf_add_local_field(array(
+    	'key' => 'field_nosotros_contenidos',
+    	'label' => 'Item',
+    	'name' => 'nosotros_item_contenidos',
+    	'parent' => 'field_33',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => '',
+    ));
+    acf_add_local_field(array(
+    	'key' => 'field_nosotros_experiencias',
+    	'label' => 'Item',
+    	'name' => 'nosotros_item_experiencias',
+    	'parent' => 'field_34',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => '',
+    ));
+
 
     register_field_group(array (
 		'id' => 'acf_contacto-fields',

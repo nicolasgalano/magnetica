@@ -20,12 +20,12 @@ get_header();
 
                 $item_href = get_field('site_url', $post->ID);
 
-                $show_client = false;
-                foreach ($categories as $category) {
-                    if( ($category->name=='argentina' && $_SESSION['pais']=='AR') || ($category->name=='paraguay' && $_SESSION['pais']=='PY') ){
+                //$show_client = false;
+                //foreach ($categories as $category) {
+                    //if( ($category->name=='argentina' && $_SESSION['pais']=='AR') || ($category->name=='paraguay' && $_SESSION['pais']=='PY') ){
                         $show_client = true;
-                    }
-                }
+                    //}
+                //}
                 if( $show_client ){
                 ?>
 

@@ -6,8 +6,8 @@
 //CLIENTES ROW
 .section-row.row-clientes{
 
-    padding-top:110px;
-    padding-bottom:160px;
+    padding-top:100px;
+    padding-bottom:130px;
     .container{
         position:relative;
     }
@@ -24,9 +24,11 @@
             opacity: 1;
         }
         .flex-prev{
+            left:-40px;
             background-image: url(../images/img-arrow-left.png);
         }
         .flex-next{
+            right:-40px;
             background-image: url(../images/img-arrow-right.png);
         }
     }
@@ -55,7 +57,7 @@
 //NOSOTROS ROW
 .section-row.row-nosotros{
 
-    padding-bottom:160px;
+    padding-bottom:30px;
     .container{
         position:relative;
     }
@@ -63,21 +65,21 @@
     .col-xs-12{
 
         h3{
-            font-size:35px;
-            line-height: 42px;
-            color:#FFF;
-            font-family: $lato;
-            font-weight: 900;
-            padding:0 0 24px;
-            margin-top: 11px;
-        }
-        p{
             font-size:20px;
             line-height: 30px;
             color:#FFF;
             font-family: $lato;
+            font-weight: 900;
+            padding:0 0 10px;
+            margin-top: 5px;
+        }
+        p{
+            font-size:16px;
+            line-height: 24px;
+            color:#FFF;
+            font-family: $lato;
             font-weight: 300;
-            padding:0 0 40px;
+            padding:0 0 30px;
         }
         .images{
             .item-multimedia{
@@ -92,10 +94,82 @@
 
 }
 
+//SERVICIOS ROW
+.section-row.row-servicios{
+
+    padding-bottom:160px;
+    .container{
+        position:relative;
+    }
+
+    .item{
+        width:20%;
+        float:left;
+        padding:0 10px 30px;
+        @media only screen and (max-width: 1000px) {
+            width:50%;
+        }
+        @media only screen and (max-width: 500px) {
+            width:100%;
+        }
+        h3{
+            font-size:20px;
+            line-height: 30px;
+            color:#FFF;
+            font-family: $lato;
+            font-weight: 500;
+            padding:0 0 0 39px;
+            margin-top: 5px;
+            height:40px;
+            line-height:40px;
+            background-repeat:no-repeat;
+            background-size: contain;
+
+            &.cat-contenidos{
+                color:#ebc852;
+                background-image: url(../images/cat-contenidos.png);
+            }
+            &.cat-diseno{
+                color:#928ac1;
+                background-image: url(../images/cat-diseno.png);
+            }
+            &.cat-creatividad{
+                color:#cc6450;
+                background-image: url(../images/cat-creatividad.png);
+            }
+            &.cat-eventos{
+                color:#96c5e9;
+                background-image: url(../images/cat-eventos.png);
+            }
+            &.cat-experiencias{
+                color:#31c45e;
+                background-image: url(../images/cat-experiencias.png);
+            }
+        }
+        ul{
+            margin:0;
+            padding:0;
+            li{
+                font-size:14px;
+                line-height: 16px;
+                color:#FFF;
+                font-family: $lato;
+                font-weight: 300;
+                padding:0 0 2px;
+                list-style: none;
+                @media only screen and (max-width: 1000px) {
+                    font-size:16px;
+                    line-height: 18px;
+                }
+            }
+        }
+    }
+}
+
 //FICHA ROW
 .section-row.row-ficha{
 
-    padding-bottom:160px;
+    padding-bottom:130px;
     .container{
         position:relative;
     }
@@ -108,11 +182,11 @@
         overflow: hidden;
         background:url(../images/img-arrow-left.png) center center no-repeat;
         &.arrow-left{
-            left:-54px;
+            left:-40px;
             background-image: url(../images/img-arrow-left.png);
         }
         &.arrow-right{
-            right:-54px;
+            right:-40px;
             background-image: url(../images/img-arrow-right.png);
         }
     }
@@ -120,17 +194,17 @@
     .col-xs-12{
 
         h3{
-            font-size:35px;
-            line-height: 42px;
+            font-size:20px;
+            line-height: 30px;
             color:#FFF;
             font-family: $lato;
             font-weight: 900;
-            padding:0 0 24px;
+            padding:0 0 10px;
             margin-top: 11px;
         }
         .icons{
 
-            margin:0 0 27px;
+            margin:0 0 40px;
 
             .cat-icon{
 
@@ -158,16 +232,19 @@
                 &.cat-eventos{
                     background-image: url(../images/cat-eventos.png);
                 }
+                &.cat-experiencias{
+                    background-image: url(../images/cat-experiencias.png);
+                }
             }
 
         }
         p{
-            font-size:20px;
-            line-height: 30px;
+            font-size:16px;
+            line-height: 24px;
             color:#FFF;
             font-family: $lato;
             font-weight: 300;
-            padding:0 0 40px;
+            padding:0 0 20px;
         }
         .images{
             iframe.item-multimedia{
@@ -187,16 +264,51 @@
 //SLIDER ROW
 .section-row.row-slider{
     overflow: hidden;
+
+    .flex-viewport{
+        height:540px !important;
+        @media only screen and (max-width: 1100px) {
+            height:400px !important;
+        }
+        @media only screen and (max-width: 600px) {
+            height:300px !important;
+        }
+    }
+
+    .flex-direction-nav{
+
+        a:before{
+            content:none;
+        }
+        a{
+            width:20px;
+            height:31px;
+            text-indent: 200px;
+            opacity: 1;
+        }
+        .flex-prev{
+            left:-30px;
+            background-image: url(../images/img-arrow-left.png);
+        }
+        .flex-next{
+            right:-30px;
+            background-image: url(../images/img-arrow-right.png);
+        }
+
+        @media only screen and (max-width: 1100px) {
+            .flex-prev{
+                left:0px;
+            }
+            .flex-next{
+                right:0px;
+            }
+        }
+    }
+
     .flexslider{
         border:0;
         background: none;
         margin:0;
-    }
-    .flex-direction-nav a{
-        height:57px;
-        &:before{
-            color:#FFF;
-        }
     }
     .flex-control-nav{
 
@@ -227,17 +339,23 @@
     }
 
     .overlay{
-        background:rgba(40,40,40,0.3);
+        background:rgba(40,40,40,0.6);
         position:absolute;
-        bottom:0;
+        bottom:100px;
         left:0;
         width:100%;
         margin:0;
+
+        @media only screen and (max-width: 1100px) {
+            bottom:50px;
+        }
+
         .inner{
             position:relative;
         }
 
         .type{
+            display:none;
             position:absolute;
             top:-82px;
             left:34px;
@@ -251,22 +369,22 @@
         }
         .text{
             p{
-                font-size: 35px;
-                line-height:40px;
+                font-size: 20px;
+                line-height:32px;
                 font-weight: 700;
                 color:#FFF;
                 margin:0;
-                padding:26px 84px 26px 34px;
+                padding:20px 84px 20px 34px;
             }
             .icons{
                 position:absolute;
-                top:27px;
+                top:22px;
                 right:40px;
                 .cat-icon{
                     float:left;
-                    width:28px;
-                    height:46px;
-                    margin:0 0 0 14px;
+                    width:20px;
+                    height:32px;
+                    margin:0 0 0 10px;
                     background-repeat:no-repeat;
                     background-size: contain;
                     &.cat-contenidos{
@@ -281,6 +399,9 @@
                     &.cat-eventos{
                         background-image: url(../images/cat-eventos.png);
                     }
+                    &.cat-experiencias{
+                        background-image: url(../images/cat-experiencias.png);
+                    }
                 }
             }
         }
@@ -294,7 +415,7 @@
             margin:0;
             height:100%;
         }
-        height:641px;
+        height:640px;
         background-size:cover;
         @media only screen and (max-width: 1100px) {
             height:450px;
@@ -311,8 +432,9 @@
 
 //PROYCTOS ROW
 .section-row.row-proyectos{
+
     .container{
-        padding:10px 16px 170px;
+        padding:10px 16px 140px;
     }
     .col-xs-4{
         position: relative;
@@ -324,6 +446,7 @@
         position: relative;
     }
     .type{
+        display:none;
         position:absolute;
         top:20px;
         left:20px;
@@ -349,12 +472,12 @@
         }
         .text{
             p{
-                font-size: 20px;
-                line-height:22px;
+                font-size: 16px;
+                line-height:20px;
                 font-weight: 700;
                 color:#FFF;
                 margin:0;
-                padding:28px 46px 26px 16px;
+                padding:20px 46px 18px 16px;
             }
             .icons{
                 position:absolute;
@@ -363,9 +486,9 @@
                 height: 100%;
                 .cat-icon{
                     float:left;
-                    width:21px;
+                    width:16px;
                     height:100%;
-                    margin:0 0 0 9px;
+                    margin:0 0 0 8px;
                     background-repeat:no-repeat;
                     background-size: contain;
                     background-position: 0 center;
@@ -380,6 +503,9 @@
                     }
                     &.cat-eventos{
                         background-image: url(../images/cat-eventos.png);
+                    }
+                    &.cat-experiencias{
+                        background-image: url(../images/cat-experiencias.png);
                     }
                 }
             }

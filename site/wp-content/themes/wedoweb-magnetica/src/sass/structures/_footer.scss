@@ -2,29 +2,29 @@ footer {
     background:#FFFFFF;
     overflow:hidden;
     .container{
-        padding:44px 0 6px;
+        padding:34px 0 6px;
     }
     h4{
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 700;
-        padding-bottom:30px;
+        padding-bottom:20px;
         margin:0 0 0 8px;
         @media only screen and (max-width: 763px) {
             margin-left:20px;
         }
     }
     .sep{
-        height:210px;
+        height:172px;
         border-right:1px solid #9b999e;
         border-left:1px solid #a7a6ab;
         width: 0px;
         padding: 0;
     }
     .informacion{
-        padding:0 0 40px 8px;
+        padding:0 0 30px 8px;
         p{
-            font-size:20px;
-            line-height: 22px;
+            font-size:16px;
+            line-height: 18px;
             font-weight: 400;
             margin:0 0 4px;
         }
